@@ -1,219 +1,162 @@
-# **Ollama Models Documentation**
-
-## **1. Introduction**
-
-Ollama is a lightweight, local-first platform designed to run Large Language Models (LLMs) efficiently on your machine. It provides an easy way to download, manage, and serve models through simple terminal commands or API usage. This documentation explains how Ollama works, how different models compare, and how to use them in single-agent and multi-agent architectures.
+# **Ollama Complete Models Guide**
 
 ---
 
-## **2. What is Ollama?**
+## **1. OLLAMA (Local - 100% Free)**
 
-Ollama is a **local inference engine** that:
+### **Popular Models & Details**
 
-- Runs LLMs locally (CPU or GPU)
-- Provides a simple CLI and REST API
-- Handles model downloading, caching, quantization, and execution
-- Supports multiple open‑source models
+| Model | Parameters | Size on Disk | Context | Speed (tokens/sec) | Hardware Required | Response Time |
+|-------|-----------|--------------|---------|-------------------|-------------------|---------------|
+| **Phi-3 Mini** | 3.8B | 2.3 GB | 128K | 50-80 | 4GB RAM, CPU only | 2-4 sec |
+| **Llama 3.2** | 3B | 2 GB | 128K | 45-75 | 4GB RAM, CPU only | 2-5 sec |
+| **TinyLlama** | 1.1B | 637 MB | 2K | 80-120 | 2GB RAM, CPU only | 1-2 sec |
+| **Mistral 7B** | 7B | 4.1 GB | 32K | 30-50 | 8GB RAM, CPU | 4-6 sec |
+| **Gemma 2 9B** | 9B | 5.5 GB | 8K | 25-40 | 8GB RAM, CPU/GPU | 5-8 sec |
+| **Llama 3.1 8B** | 8B | 4.7 GB | 128K | 30-45 | 8GB RAM, CPU/GPU | 4-7 sec |
+| **Qwen 2.5 7B** | 7B | 4.4 GB | 32K | 28-45 | 8GB RAM, CPU | 5-7 sec |
+| **DeepSeek Coder 7B** | 6.7B | 3.8 GB | 16K | 32-48 | 8GB RAM, CPU | 4-6 sec |
+| **Llama 3.1 70B** | 70B | 40 GB | 128K | 5-10 | 32GB RAM + GPU 24GB | 15-30 sec |
+| **Qwen 2.5 72B** | 72B | 41 GB | 32K | 4-8 | 32GB RAM + GPU 24GB | 20-40 sec |
 
-**Why developers use Ollama:**
+### **Best For <10 Seconds Response**
 
-- No cloud costs
-- Full data privacy
-- Fast inference due to local hardware
-- Simple integration with Python, Node.js, Go, etc.
+**CPU Only:**
+- Phi-3 Mini (3.8B) - 2-4 sec
+- TinyLlama (1.1B) - 1-2 sec
+- Llama 3.2 (3B) - 2-5 sec
+- Mistral 7B - 4-6 sec
 
----
+**With GPU (8GB+ VRAM):**
+- Mistral 7B - 2-3 sec
+- Llama 3.1 8B - 2-4 sec
+- Gemma 2 9B - 3-5 sec
+- Qwen 2.5 7B - 3-5 sec
 
-## **3. How Ollama Models Work**
+### **Hardware Requirements Summary**
 
-Each model in Ollama is downloaded as a `.gguf` file (quantized format). Ollama optimizes these files for fast runtime and low resource usage.
+| Hardware | Recommended Models | Expected Speed |
+|----------|-------------------|----------------|
+| **Laptop (4GB RAM, CPU)** | Phi-3, TinyLlama, Llama 3.2 | 1-5 sec |
+| **Normal PC (8GB RAM, CPU)** | Mistral 7B, Llama 3.1 8B, Qwen 7B | 4-7 sec |
+| **Gaming PC (16GB RAM, 8GB GPU)** | All 7B-9B models | 2-5 sec |
+| **High-end (32GB RAM, 24GB GPU)** | 70B models | 15-30 sec |
 
-### **Key components:**
-
-| Component    | Role                                                   |
-| ------------ | ------------------------------------------------------ |
-| Model file   | Quantized `.gguf` version of the LLM                   |
-| Runtime      | Handles prompt parsing, batching, and inference        |
-| Template     | Pre-prompt formatting (system prompt style)            |
-| Model config | Defines parameters like temperature, stop tokens, etc. |
-
----
-
-## **4. Popular Ollama Models and Their Use-Cases**
-
-Below is a comparison of the most commonly used models:
-
-### **Table: Model Comparison**
-
-| Model                 | Size   | Strengths                                       | Weaknesses                          | Use-case                 |
-| --------------------- | ------ | ----------------------------------------------- | ----------------------------------- | ------------------------ |
-| **LLaMA 3.1 8B/70B**  | 8B–70B | Balanced performance, good reasoning            | 8B sometimes weak in deep reasoning | Chatbots, assistants     |
-| **Mistral 7B**        | 7B     | Fast, lightweight                               | Not ideal for complex reasoning     | Apps needing speed       |
-| **Gemma 2 9B/27B**    | 9B–27B | Very accurate, strong coding                    | Larger models need more RAM         | Coding agents, RAG       |
-| **Qwen 2.5 7B/72B**   | 7B–72B | One of the best multilingual & reasoning models | Very large file size for 72B        | Multi-agent systems, RAG |
-| **Phi-3 Mini/Medium** | 3B–14B | Very efficient on small hardware                | Limited reasoning                   | Mobile/edge usage        |
+### **Installation & Usage**
 
 ---
 
-## **5. How Ollama Performs in Multi-Agent Architectures**
+## **2. TOGETHER AI (Cloud - Paid with Free Tier)**
 
-A multi-agent system means:
+### **Free Models (3 Months Free Access)**
 
-- Multiple AI agents working together
-- Each agent may have a different role
-- Agents communicate with each other using messages
+| Model | Parameters | Context | Speed | Input Price | Output Price | Best For |
+|-------|-----------|---------|-------|-------------|--------------|----------|
+| **Llama 3.3 70B Turbo Free** | 70B | 128K | Fast | FREE | FREE | General chat, reasoning |
+| **FLUX.1 Schnell Free** | Image Gen | N/A | 315ms | FREE | FREE | Image generation |
 
-### **Does Ollama support multi-agent architectures?**
+### **Popular Paid Models**
 
-Yes — **but it depends on hardware and model size**.
+| Model | Parameters | Context | Input ($/1M) | Output ($/1M) | Best Use |
+|-------|-----------|---------|--------------|---------------|----------|
+| **DeepSeek-R1** | 671B MoE | 128K | $2.20 | $10.50 | Advanced reasoning |
+| **Llama 3.1 8B** | 8B | 128K | $0.18 | $0.18 | Fast general tasks |
+| **Mistral 7B** | 7B | 32K | $0.20 | $0.20 | Quick responses |
+| **Qwen 2.5 72B** | 72B | 32K | $0.60 | $0.60 | Multilingual |
+| **Gemma 2 9B** | 9B | 8K | $0.20 | $0.20 | Coding |
 
-### **Latency Considerations**
+### **Key Features**
+- **Free Tier**: Limited free calls/month
+- **Speed**: Optimized inference (4x faster than vLLM)
+- **Pay-per-token**: No subscription required
+- **Hardware**: Cloud-based (no local hardware needed)
 
-| Situation                                     | Latency Level                               |
-| --------------------------------------------- | ------------------------------------------- |
-| Single small model (3B–7B)                    | Low                                         |
-| Multiple agents using the same model          | Medium                                      |
-| Multiple agents using different 7B–14B models | Medium to high                              |
-| Multiple 70B models                           | Very high / Not feasible without strong GPU |
-
-### **Why latency increases?**
-
-1. Models must load into RAM
-2. Each agent call is sequential unless you use multi-threading
-3. Larger models require more VRAM for each inference
-
-### **How to reduce latency?**
-
-- Use quantized models (`q4_K_M`, `q5_K_M`)
-- Use smaller versions (7B or 8B)
-- Share the same model instance across agents
-- Enable server mode `ollama serve`
-- Use batching for message processing
+### **Response Time Estimate**
+- 7B-8B models: 1-3 seconds
+- 70B models: 3-8 seconds
+- Image generation: <1 second
 
 ---
 
-## **6. Using Ollama in Real Projects**
+## **3. OPENROUTER (Cloud - Unified Gateway)**
 
-### **Set up the server**
+### **Free Models Available**
 
-```bash
-ollama serve
-```
+| Model | Parameters | Context | Provider | Input Price | Output Price |
+|-------|-----------|---------|----------|-------------|--------------|
+| **Llama 4 Maverick** | 17B MoE | 128K | Meta | FREE | FREE |
+| **DeepSeek R1 70B** | 70B | 128K | DeepSeek | FREE | FREE |
+| **DeepSeek Chat V3** | 671B MoE | 64K | DeepSeek | FREE | FREE |
+| **Gemini 2.0 Flash** | N/A | 1M | Google | FREE | FREE |
+| **Gemma 2 9B** | 9B | 8K | Google | FREE | FREE |
+| **Gemma 3 27B** | 27B | 8K | Google | FREE | FREE |
+| **Llama 3.3 70B** | 70B | 128K | Meta | FREE | FREE |
+| **Mistral Nemo** | 12B | 131K | Mistral | FREE | FREE |
+| **QwQ 32B** | 32B | 32K | Qwen | FREE | FREE |
 
-### **Pull a model**
+### **Rate Limits**
+- **<10 credits**: 50 free requests/day
+- **≥10 credits** ($10): 1000 requests/day
 
-```bash
-ollama pull llama3.1:8b
-```
+### **Key Features**
+- **200+ models** from all major providers
+- **Unified API**: OpenAI-compatible
+- **Auto-fallback**: If one model fails, routes to another
+- **No subscription**: Pay only for what you use
+- **Zero completion insurance**: Only pay for successful runs
 
-### **Generate text**
+### **Paid Models (Popular)**
 
-```bash
-ollama run llama3.1:8b "Explain quantum computing simply"
-```
+| Model | Parameters | Input ($/1M) | Output ($/1M) |
+|-------|-----------|--------------|---------------|
+| GPT-5 | N/A | $3.00 | $15.00 |
+| Claude Opus 4.1 | N/A | $15.00 | $75.00 |
+| Claude Sonnet 4 | N/A | $3.00 | $15.00 |
+| Gemini 2.5 Pro | N/A | $2.50 | $10.00 |
 
----
-
-## **7. Using Ollama Through the API**
-
-Ollama exposes a REST API at:
-
-```
-http://localhost:11434
-```
-
-### **Example: Python Integration**
-
-```python
-import requests
-
-response = requests.post(
-    "http://localhost:11434/api/generate",
-    json={"model": "llama3.1:8b", "prompt": "Write a poem."}
-)
-
-print(response.json()["response"])
-```
-
-### **Example: Node.js Integration**
-
-```javascript
-import fetch from "node-fetch";
-
-const res = await fetch("http://localhost:11434/api/generate", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ model: "llama3.1:8b", prompt: "Hello" })
-});
-
-const data = await res.json();
-console.log(data.response);
-```
+### **Response Time Estimate**
+- Free models: 3-10 seconds (depends on server load)
+- Paid models: 1-5 seconds
+- Rate-limited during peak times
 
 ---
 
-## **8. Multi-Agent Implementation Example**
+## **Quick Comparison**
 
-### **Architecture Overview**
-
-- **Agent 1:** Retrieval Agent (search + data retrieval)
-- **Agent 2:** Reasoning Agent (deep thinking model)
-- **Agent 3:** Writer Agent (creates final answer)
-
-### **Best Model Choices**
-
-| Agent Type      | Recommended Model  |
-| --------------- | ------------------ |
-| Retrieval Agent | Mistral 7B / Phi-3 |
-| Reasoning Agent | Qwen 7B / Qwen 32B |
-| Writer Agent    | LLaMA 3.1 8B       |
+| Feature | Ollama | Together AI | OpenRouter |
+|---------|--------|-------------|------------|
+| **Cost** | 100% Free | Free tier + Paid | Free tier + Paid |
+| **Hardware Needed** | YES (Local) | NO (Cloud) | NO (Cloud) |
+| **Internet Required** | NO | YES | YES |
+| **Privacy** | 100% Private | Cloud-based | Cloud-based |
+| **Response Speed** | 1-30 sec (hardware dependent) | 1-8 sec | 3-10 sec |
+| **Model Count** | 100+ | 200+ | 200+ |
+| **Best For** | Privacy, offline use | Speed, reliability | Model variety, experimentation |
 
 ---
 
-## **9. Hardware Requirements**
+## **Recommendations**
 
-| Model Size | RAM Needed | Ideal Hardware           |
-| ---------- | ---------- | ------------------------ |
-| 3B–7B      | 4–8 GB     | Normal laptop            |
-| 8B–14B     | 8–16 GB    | Gaming laptop or mid GPU |
-| 30B–70B    | 32–64 GB   | High-end GPU (24GB+)     |
+### **For <10 Second Responses:**
 
----
+**Ollama (Local):**
+- Use 3B-9B models with good hardware
+- Phi-3 Mini, Mistral 7B, Llama 3.1 8B
+- Requires 8GB RAM minimum
 
-## **10. When to Use Which Model?**
+**Together AI (Cloud):**
+- Free 70B model responds in 3-8 seconds
+- No hardware needed
+- Best for occasional use
 
-**Use small models when:**
+**OpenRouter (Cloud):**
+- Free Llama 3.3 70B responds in 4-8 seconds
+- Free Gemini 2.0 Flash very fast
+- Good for testing multiple models
 
-- You need real-time responses
-- Running multiple agents
-- Using limited hardware
+### **Best Choice by Use Case:**
 
-**Use large models when:**
-
-- You need strong reasoning
-- Deep problem solving
-- Code generation
-
----
-
-## **11. Pros & Cons of Ollama**
-
-### **Pros**
-
-- Free & open-source
-- Fast local inference
-- Easy API
-- Secure & private
-
-### **Cons**
-
-- Limited by hardware
-- Large models can be slow
-- Not ideal for very large-scale apps
-
----
-
-## **12. Conclusion**
-
-Ollama is powerful for developers who want to run AI locally. With the right model selection and proper architecture design, it can support even complex multi-agent systems. However, model size and hardware significantly impact latency.
-
+- **Privacy-first**: Ollama
+- **Best performance**: Together AI (paid)
+- **Most variety**: OpenRouter
+- **Budget-friendly**: Ollama > OpenRouter Free > Together AI Free
